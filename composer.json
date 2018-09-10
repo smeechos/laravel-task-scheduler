@@ -1,0 +1,19 @@
+{
+    "name": "smeechos/task-scheduler",
+    "description": "Allows users to manage Laravel tasks from an admin panel.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex DeRito",
+            "email": "ad.webproductions@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Smeechos\\TaskScheduler\\": "src/"
+        }
+    }
+}
