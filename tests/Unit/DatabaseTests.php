@@ -1,6 +1,5 @@
 <?php
 
-//namespace Tests\Unit;
 namespace Smeechos\TaskScheduler\Tests\Unit;
 
 use Tests\TestCase;
