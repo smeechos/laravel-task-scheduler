@@ -28,6 +28,12 @@ class SettingsController extends Controller
         return view('task-scheduler::settings.index', ['settings' => $array]);
     }
 
+    // TODO: review all files and clean up unnecessary code
+    // TODO: write tests
+    // TODO: finish README
+    // TODO: ensure github setup correctly
+    // TODO: submit to packagist + packalyst.
+
     /**
      * Store a newly created resource in storage.
      *
