@@ -2,11 +2,11 @@
 
 namespace Smeechos\TaskScheduler\Tests\Unit;
 
-use Tests\TestCase;
+use Orchestra\Testbench\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class DatabaseTests extends TestCase
+class DatabaseTest extends TestCase
 {
     /**
      * A basic test example.
