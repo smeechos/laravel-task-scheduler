@@ -38,4 +38,18 @@ class TaskTest extends TestCase
         $task->save();
         $this->assertNotEquals($command, $task->command);
     }
+
+    /**
+     * Test that a model can be deleted.
+     *
+     * @return void
+     * @test
+     */
+    public function can_delete_task()
+    {
+        $task = factory(Task::class, 1)->make()->first();
+        $id = $task->id;
+        $task->delete();
+        $this->assertEmpty(Task::where('id', '=', $id)->first());
+    }
 }

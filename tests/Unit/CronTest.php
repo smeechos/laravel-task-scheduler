@@ -38,4 +38,18 @@ class CronTest extends TestCase
         $cron->save();
         $this->assertNotEquals($expression, $cron->expression);
     }
+
+    /**
+     * Test that a model can be deleted.
+     *
+     * @return void
+     * @test
+     */
+    public function can_delete_cron()
+    {
+        $cron = factory(Cron::class, 1)->make()->first();
+        $id = $cron->id;
+        $cron->delete();
+        $this->assertEmpty(Cron::where('id', '=', $id)->first());
+    }
 }
