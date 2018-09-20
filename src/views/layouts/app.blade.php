@@ -1,8 +1,13 @@
 <?php
-$tab = basename($_SERVER['REQUEST_URI']);
-$containsCrons = strpos($_SERVER['REQUEST_URI'], '/crons');
-$containsTasks = strpos($_SERVER['REQUEST_URI'], '/tasks');
-$containsSettings = strpos($_SERVER['REQUEST_URI'], '/settings');
+if( isset($_SERVER['REQUEST_URI']) ) {
+    $containsCrons = strpos($_SERVER['REQUEST_URI'], '/crons');
+    $containsTasks = strpos($_SERVER['REQUEST_URI'], '/tasks');
+    $containsSettings = strpos($_SERVER['REQUEST_URI'], '/settings');
+} else {
+    $containsCrons = true;
+    $containsTasks = false;
+    $containsSettings = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

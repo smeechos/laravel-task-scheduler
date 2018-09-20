@@ -51,8 +51,6 @@
                 </thead>
                 <tbody>
                 <?php
-                use Smeechos\TaskScheduler\Models\Cron;
-                $crons = Cron::all();
                 if ( !empty($crons) ) {
                 foreach ( $crons as $cron ) : ?>
                 <tr>

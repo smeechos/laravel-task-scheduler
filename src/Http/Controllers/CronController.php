@@ -27,7 +27,7 @@ class CronController extends Controller
      */
     public function index()
     {
-        return view('task-scheduler::crons.index');
+        return view('task-scheduler::crons.index', ['crons' => Cron::all()]);
     }
 
     /**
