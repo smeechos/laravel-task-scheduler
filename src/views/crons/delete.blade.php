@@ -9,11 +9,11 @@
                 <form id="cron-schedules" action="/task-scheduler/crons/delete/{{ $cron->id }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="cron-input">Expression</label>
+                        <label for="cron-input">Cron Expression</label>
                         <input type="text" class="form-control" id="cron-input" aria-describedby="cron-limit-desc" placeholder="e.g. 0 * 0 ? * * *" name="expression" value="{{ $cron->expression }}" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="cron-desc">Description</label>
+                        <label for="cron-desc">Description of Expression</label>
                         <input type="text" class="form-control" id="cron-desc" aria-describedby="cron-desc-desc" placeholder="e.g. every minute" name="description" value="{{ $cron->description }}" disabled>
                     </div>
                     <button type="submit" class="btn btn-danger">Delete</button>
