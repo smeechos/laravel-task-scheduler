@@ -14,12 +14,20 @@ class CronControllerTests extends TestCase
     /**
      * Testing index method of CronController.
      *
+     * Tests that the route returns a view with a variable, $crons, that is
+     * an instance of Illuminate\Database\Eloquent\Collection.
+     *
      * @return void
      * @test
      */
     public function test_index()
     {
         $response = $this->get('/task-scheduler/crons');
+
         $response->assertViewHas( 'crons' );
+
+        $crons = $response->original->getData()['crons'];
+
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $crons);
     }
 }
