@@ -39,6 +39,9 @@ class CronTest extends TestCase
     /**
      * Test that an instance of Cron can be retrieved.
      *
+     * Confirms that the found instance is of the type Task, and that its properties
+     * match that of the instance that was created.
+     *
      * @return void
      * @test
      */
