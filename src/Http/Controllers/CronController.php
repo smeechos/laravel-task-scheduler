@@ -39,7 +39,7 @@ class CronController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'expression'    => 'required|string|max:255|unique:crons',
+            'expression'    => 'required|string|max:255|unique:task_scheduler_crons',
             'description'   => 'required|string|max:255',
         ]);
 
@@ -111,7 +111,7 @@ class CronController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'expression'    => 'required|string|max:255|unique:crons,expression,' . $id,
+            'expression'    => 'required|string|max:255|unique:task_scheduler_crons,expression,' . $id,
             'description'   => 'required|string|max:255',
         ]);
 

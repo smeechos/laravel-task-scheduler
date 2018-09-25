@@ -40,7 +40,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'command'   => 'required|string|max:255|unique:tasks',
+            'command'   => 'required|string|max:255|unique:task_scheduler_tasks',
             'cron'      => 'required|numeric'
         ]);
 
@@ -112,7 +112,7 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'command'   => 'required|string|max:255|unique:tasks',
+            'command'   => 'required|string|max:255|unique:task_scheduler_tasks',
             'cron'      => 'required|numeric|max:255'
         ]);
 
