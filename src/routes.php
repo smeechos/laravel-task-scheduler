@@ -24,6 +24,7 @@ Route::group(['namespace' => 'Smeechos\TaskScheduler\Http\Controllers'], functio
     Route::post('task-scheduler/tasks/add', 'TaskController@store' );
     Route::post('task-scheduler/tasks/delete/{id}', 'TaskController@destroy');
 
+    Route::get('task-scheduler', 'SettingsController@index');
     Route::get('task-scheduler/settings', 'SettingsController@index')->name('settings');
     Route::post('task-scheduler/settings', 'SettingsController@store');
 });

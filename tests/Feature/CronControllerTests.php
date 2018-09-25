@@ -55,6 +55,7 @@ class CronControllerTests extends TestCase
         $this->post('task-scheduler/crons/add', $data)
             ->assertStatus(302)
             ->assertRedirect(route('crons'))
+            ->assertSessionHas('stsp-type', 'cron')
             ->assertSessionHas('stsp-status', 'success')
             ->assertSessionHas('stsp-message', 'Cron Expression Successfully Added!');
     }
@@ -101,6 +102,7 @@ class CronControllerTests extends TestCase
         $this->post('task-scheduler/crons/edit/' . $cron->id, $data)
             ->assertStatus(302)
             ->assertRedirect(route('crons'))
+            ->assertSessionHas('stsp-type', 'cron')
             ->assertSessionHas('stsp-status', 'success')
             ->assertSessionHas('stsp-message', 'Cron Expression Successfully Updated!');
     }
@@ -139,6 +141,7 @@ class CronControllerTests extends TestCase
         $this->post('task-scheduler/crons/delete/' . $cron->id)
             ->assertStatus(302)
             ->assertRedirect(route('crons'))
+            ->assertSessionHas('stsp-type', 'cron')
             ->assertSessionHas('stsp-status', 'success')
             ->assertSessionHas('stsp-message', 'Cron Expression Successfully Deleted!');
 

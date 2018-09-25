@@ -102,13 +102,13 @@ if( isset($_SERVER['REQUEST_URI']) ) {
                 <div class="col-md-12 mb-3">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($containsTasks || !$containsCrons && !$containsSettings) ? 'active' : '' ?>" href="{{ route('tasks') }}">Tasks / Artisan Commands</a>
+                            <a class="nav-link <?php echo ($containsTasks && !$containsCrons && !$containsSettings) ? 'active' : '' ?>" href="{{ route('tasks') }}">Tasks / Artisan Commands</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($containsCrons) ? 'active' : '' ?>" href="{{ route('crons') }}">Cron Expressions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($containsSettings) ? 'active' : '' ?>" href="{{ route('settings') }}">Settings</a>
+                            <a class="nav-link <?php echo ($containsSettings || !$containsTasks && !$containsCrons && !$containsSettings) ? 'active' : '' ?>" href="{{ route('settings') }}">Settings</a>
                         </li>
                     </ul>
                 </div>

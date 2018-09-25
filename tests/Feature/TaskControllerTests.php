@@ -61,6 +61,7 @@ class TaskControllerTests extends TestCase
         $this->post('task-scheduler/tasks/add', $data)
             ->assertStatus(302)
             ->assertRedirect(route('tasks'))
+            ->assertSessionHas('stsp-type', 'task')
             ->assertSessionHas('stsp-status', 'success')
             ->assertSessionHas('stsp-message', 'Task Successfully Added!');
     }
@@ -110,6 +111,7 @@ class TaskControllerTests extends TestCase
         $this->post('task-scheduler/tasks/edit/' . $task->id, $data)
             ->assertStatus(302)
             ->assertRedirect(route('tasks'))
+            ->assertSessionHas('stsp-type', 'task')
             ->assertSessionHas('stsp-status', 'success')
             ->assertSessionHas('stsp-message', 'Task Successfully Updated!');
     }
@@ -148,6 +150,7 @@ class TaskControllerTests extends TestCase
         $this->post('task-scheduler/tasks/delete/' . $task->id)
             ->assertStatus(302)
             ->assertRedirect(route('tasks'))
+            ->assertSessionHas('stsp-type', 'task')
             ->assertSessionHas('stsp-status', 'success')
             ->assertSessionHas('stsp-message', 'Task Successfully Deleted!');
 
