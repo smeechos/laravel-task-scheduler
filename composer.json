@@ -21,5 +21,12 @@
         "psr-4": {
             "Smeechos\\TaskScheduler\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Smeechos\\TaskScheduler\\TaskSchedulerServiceProvider"
+            ]
+        }
     }
 }

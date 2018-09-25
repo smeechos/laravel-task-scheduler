@@ -1,5 +1,8 @@
 # Laravel Task Scheduler
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Latest Stable Version](https://poser.pugx.org/smeechos/task-scheduler/v/stable)](https://packagist.org/packages/smeechos/task-scheduler)
+[![Total Downloads](https://poser.pugx.org/smeechos/task-scheduler/downloads)](https://packagist.org/packages/smeechos/task-scheduler)
+[![License](https://poser.pugx.org/smeechos/task-scheduler/license)](https://packagist.org/packages/smeechos/task-scheduler)
+
 
 Easily manage your projects tasks via a UI. Create cron expressions and link artisan commands to them, followed by a small edit to
 Kernel.php to ensure the task scheduler executes your commands.
@@ -17,7 +20,8 @@ Open the terminal and cd into your Laravel project's root directory. From there,
 composer require smeechos/task-scheduler
 ```
 
-Next, you need to register the service provider inside `config/app.php`:
+Laravel should automatically register the service provider, however if it does not,
+you'll need to manually register the service provider inside `config/app.php`:
 
 ```
 'providers' => [
