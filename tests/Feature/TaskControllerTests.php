@@ -55,8 +55,7 @@ class TaskControllerTests extends TestCase
 
         $data = [
             'command'   => $this->faker->text(15),
-            'cron'      => $cron->id,
-            '_token'    => csrf_token()
+            'cron'      => $cron->id
         ];
 
         $this->post('task-scheduler/tasks/add', $data)
@@ -105,8 +104,7 @@ class TaskControllerTests extends TestCase
 
         $data = [
             'command'   => $this->faker->text(15),
-            'cron'      => factory(Cron::class)->create()->first()->id,
-            '_token'    => csrf_token()
+            'cron'      => factory(Cron::class)->create()->first()->id
         ];
 
         $this->post('task-scheduler/tasks/edit/' . $task->id, $data)
@@ -147,11 +145,7 @@ class TaskControllerTests extends TestCase
     {
         $task = factory(Task::class)->create();
 
-        $data = [
-            '_token' => csrf_token()
-        ];
-
-        $this->post('task-scheduler/tasks/delete/' . $task->id, $data)
+        $this->post('task-scheduler/tasks/delete/' . $task->id)
             ->assertStatus(302)
             ->assertRedirect(route('tasks'))
             ->assertSessionHas('stsp-status', 'success')
