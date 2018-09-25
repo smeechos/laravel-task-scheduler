@@ -27,20 +27,3 @@ Route::group(['namespace' => 'Smeechos\TaskScheduler\Http\Controllers'], functio
     Route::get('task-scheduler/settings', 'SettingsController@index')->name('settings');
     Route::post('task-scheduler/settings', 'SettingsController@store');
 });
-
-
-
-
-//Route::group(['middleware' => ['web']], function () {
-//    Route::get('task-scheduler/tasks', function() {
-//        return view('task-scheduler::tasks.index');
-//    })->name('tasks');
-//
-//    Route::get('task-scheduler/crons', function() {
-//        return view('task-scheduler::crons.index');
-//    })->name('crons');
-//
-//    Route::get('/task-scheduler/cron/edit/{id}', function() {
-//        return view('task-scheduler::crons.edit');
-//    })->name('crons');
-//});

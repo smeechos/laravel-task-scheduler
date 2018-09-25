@@ -1,9 +1,3 @@
-<?php
-use Smeechos\TaskScheduler\Models\Task;
-use Smeechos\TaskScheduler\Models\Cron;
-$tasks = Task::all();
-$crons = Cron::all();
-?>
 @extends('task-scheduler::layouts.app')
 
 @section('content')

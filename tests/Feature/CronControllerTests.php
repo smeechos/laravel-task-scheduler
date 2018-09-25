@@ -1,6 +1,6 @@
 <?php
 
-namespace Smeechos\TaskScheduler\Tests\Unit;
+namespace Smeechos\TaskScheduler\Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Smeechos\TaskScheduler\Models\Cron;

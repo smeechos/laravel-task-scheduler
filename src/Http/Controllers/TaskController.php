@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Smeechos\TaskScheduler\Models\Task;
 use Smeechos\TaskScheduler\Models\Cron;
+use Smeechos\TaskScheduler\Models\TaskSchedulerSettings;
 
 class TaskController extends Controller
 {
+    private $settings = [];
+
     public function __construct()
     {
         $this->middleware('web');
+        foreach ( TaskSchedulerSettings::all() as $setting ) {
+            $this->settings[$setting->setting] = $setting->status;
+        }
     }
 
     /**
@@ -22,7 +28,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('task-scheduler::tasks.index');
+        return view('task-scheduler::tasks.index', ['tasks' => Task::all(), 'crons' => Cron::all()]);
     }
 
     /**
