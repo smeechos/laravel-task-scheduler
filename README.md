@@ -1,7 +1,6 @@
 # Laravel Task Scheduler
-[![Latest Stable Version](https://poser.pugx.org/smeechos/task-scheduler/v/stable)](https://packagist.org/packages/smeechos/task-scheduler)
-[![Total Downloads](https://poser.pugx.org/smeechos/task-scheduler/downloads)](https://packagist.org/packages/smeechos/task-scheduler)
-[![License](https://poser.pugx.org/smeechos/task-scheduler/license)](https://packagist.org/packages/smeechos/task-scheduler)
+[![Latest Stable Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://packagist.org/packages/smeechos/task-scheduler)
+[![License](https://img.shields.io/github/license/smeechos/laravel-task-scheduler.svg)](https://packagist.org/packages/smeechos/task-scheduler)
 
 
 Easily manage your projects tasks via a UI. Create cron expressions and link artisan commands to them, followed by a small edit to
