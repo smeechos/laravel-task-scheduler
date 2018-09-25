@@ -2,6 +2,7 @@
     "name": "smeechos/task-scheduler",
     "description": "Allows users to manage Laravel tasks from a UI.",
     "keywords": ["laravel", "php", "artisan commands", "task scheduler"],
+    "homepage": "https://github.com/smeechos/laravel-task-scheduler",
     "type": "library",
     "license": "MIT",
     "authors": [
