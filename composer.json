@@ -1,6 +1,7 @@
 {
     "name": "smeechos/task-scheduler",
-    "description": "Allows users to manage Laravel tasks from an admin panel.",
+    "description": "Allows users to manage Laravel tasks from a UI.",
+    "keywords": ["laravel", "php", "artisan commands", "task scheduler"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,10 +10,11 @@
             "email": "ad.webproductions@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {},
+    "require": {
+
+    },
     "require-dev": {
-        "orchestra/testbench": "~3.0"
+        "phpunit/phpunit": "~7.0"
     },
     "autoload": {
         "psr-4": {
