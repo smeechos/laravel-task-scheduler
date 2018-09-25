@@ -11,7 +11,7 @@ class Task extends Model
      *
      * @var string
      */
-    protected $table = 'tasks';
+    protected $table = 'task_scheduler_tasks';
 
     /**
      * The attributes that are mass assignable.

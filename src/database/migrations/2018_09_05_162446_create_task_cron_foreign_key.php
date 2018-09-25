@@ -13,8 +13,8 @@ class CreateTaskCronForeignKey extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->foreign('cron_id')->references('id')->on('crons');
+        Schema::table('task_scheduler_tasks', function (Blueprint $table) {
+            $table->foreign('cron_id')->references('id')->on('task_scheduler_crons');
         });
     }
 
@@ -25,8 +25,8 @@ class CreateTaskCronForeignKey extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropForeign('tasks_cron_id_foreign');
+        Schema::table('task_scheduler_tasks', function (Blueprint $table) {
+            $table->dropForeign('task_scheduler_tasks_cron_id_foreign');
         });
     }
 }

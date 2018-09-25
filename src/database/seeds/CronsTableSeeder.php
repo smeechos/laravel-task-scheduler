@@ -21,9 +21,9 @@ class CronsTableSeeder extends Seeder
         ];
 
         foreach ( $crons as $key => $value ) {
-            $expression = DB::table('crons')->where('expression', '=', $key)->first();
+            $expression = DB::table('task_scheduler_crons')->where('expression', '=', $key)->first();
             if ( empty($expression) ) {
-                DB::table('crons')->insert([
+                DB::table('task_scheduler_crons')->insert([
                     'expression'    => $key,
                     'description'   => $value,
                     'created_at'    => date( "Y-m-d H:i:s"),

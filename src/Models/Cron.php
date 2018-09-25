@@ -11,7 +11,7 @@ class Cron extends Model
      *
      * @var string
      */
-    protected $table = 'crons';
+    protected $table = 'task_scheduler_crons';
 
     /**
      * The attributes that are mass assignable.

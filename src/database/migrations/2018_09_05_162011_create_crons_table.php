@@ -13,7 +13,7 @@ class CreateCronsTable extends Migration
      */
     public function up()
     {
-        Schema::create('crons', function (Blueprint $table) {
+        Schema::create('task_scheduler_crons', function (Blueprint $table) {
             $table->increments('id');
             $table->string('expression');
             $table->string('description');
@@ -28,6 +28,6 @@ class CreateCronsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crons');
+        Schema::dropIfExists('task_scheduler_crons');
     }
 }

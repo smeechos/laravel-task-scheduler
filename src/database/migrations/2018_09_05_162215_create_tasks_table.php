@@ -13,7 +13,7 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('task_scheduler_tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('command');
             $table->unsignedInteger('cron_id');
@@ -28,6 +28,6 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('task_scheduler_tasks');
     }
 }

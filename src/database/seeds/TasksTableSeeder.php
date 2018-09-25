@@ -19,7 +19,7 @@ class TasksTableSeeder extends Seeder
         $count = 0;
         foreach ( $crons as $cron ) {
             if ( $count === 0 ) {
-                DB::table('tasks')->insert([
+                DB::table('task_scheduler_tasks')->insert([
                     'command'   => 'example:command',
                     'cron_id'   => $cron->id,
                     'created_at'    => date( "Y-m-d H:i:s"),
