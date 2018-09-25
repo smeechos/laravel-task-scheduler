@@ -41,7 +41,7 @@ class TaskController extends Controller
     {
         $request->validate([
             'command'   => 'required|string|max:255|unique:tasks',
-            'cron'      => 'required|numeric|max:255'
+            'cron'      => 'required|numeric'
         ]);
 
         $request->session()->flash('stsp-type', 'task');
