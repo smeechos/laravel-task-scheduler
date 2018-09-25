@@ -2,11 +2,11 @@
 
 namespace Smeechos\TaskScheduler\Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Smeechos\TaskScheduler\Models\Cron;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CronControllerTests extends TestCase
 {

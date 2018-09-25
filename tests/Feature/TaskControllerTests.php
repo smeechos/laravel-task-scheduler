@@ -2,13 +2,12 @@
 
 namespace Smeechos\TaskScheduler\Tests\Feature;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Log;
 use Smeechos\TaskScheduler\Models\Cron;
 use Smeechos\TaskScheduler\Models\Task;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TaskControllerTests extends TestCase
 {
@@ -39,6 +38,32 @@ class TaskControllerTests extends TestCase
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $crons);
         $response->assertSeeInOrder(['Add New Task', 'Command Name', 'Cron Expressions',
             'Artisan Command', 'Cron', 'Description', 'Actions']);
+    }
+
+    /**
+     * Testing store method of TaskController.
+     *
+     * Posts to the URI, asserts that the status is a 302 and is redirected to
+     * the route 'tasks', with the specified session variables (flash message).
+     *
+     * @return void
+     * @test
+     */
+    public function it_can_create_task()
+    {
+        $cron = factory(Cron::class)->create()->first();
+
+        $data = [
+            'command'   => $this->faker->text(15),
+            'cron'      => $cron->id,
+            '_token'    => csrf_token()
+        ];
+
+        $this->post('task-scheduler/tasks/add', $data)
+            ->assertStatus(302)
+            ->assertRedirect(route('tasks'))
+            ->assertSessionHas('stsp-status', 'success')
+            ->assertSessionHas('stsp-message', 'Task Successfully Added!');
     }
 
     /**
@@ -76,54 +101,19 @@ class TaskControllerTests extends TestCase
      */
     public function it_can_update_task()
     {
-        // TODO: finish this test
-//        $task = factory(Task::class)->create();
-//
-//        $data = [
-//            'command'   => $this->faker->text(15),
-//            'cron_id'   => factory(\Smeechos\TaskScheduler\Models\Cron::class)->create()->id,
-//            '_token'        => csrf_token()
-//        ];
-//
-//        $this->post('task-scheduler/tasks/edit/' . $task->id, $data)
-//            ->assertStatus(302)
-//            ->assertRedirect(route('tasks'))
-//            ->assertSessionHas('stsp-status', 'success')
-//            ->assertSessionHas('stsp-message', 'Task Successfully Updated!');
-        $this->assertTrue(true);
-    }
-
-    /**
-     * Testing store method of TaskController.
-     *
-     * Posts to the URI, asserts that the status is a 302 and is redirected to
-     * the route 'tasks', with the specified session variables (flash message).
-     *
-     * @return void
-     * @test
-     */
-    public function it_can_create_task()
-    {
-        /*
-         * TODO: fix this so it passes
-         * This currently fails because it does not like the foreign key constraint.
-         * When I used a value that actually exists in the database, it passes.
-         * When I used a value that is not in the database, it fails.
-         * When I use a factory and use its ID, it fails.
-         */
-        $cron = factory(Cron::class)->create();
+        $task = factory(Task::class)->create();
 
         $data = [
             'command'   => $this->faker->text(15),
-            'cron'      => $cron->id,
+            'cron'      => factory(Cron::class)->create()->first()->id,
             '_token'    => csrf_token()
         ];
 
-        $this->post('task-scheduler/tasks/add', $data)
-                ->assertStatus(302)
-                ->assertRedirect(route('tasks'))
-                ->assertSessionHas('stsp-status', 'success')
-                ->assertSessionHas('stsp-message', 'Task Successfully Added!');
+        $this->post('task-scheduler/tasks/edit/' . $task->id, $data)
+            ->assertStatus(302)
+            ->assertRedirect(route('tasks'))
+            ->assertSessionHas('stsp-status', 'success')
+            ->assertSessionHas('stsp-message', 'Task Successfully Updated!');
     }
 
     /**
