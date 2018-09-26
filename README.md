@@ -47,7 +47,7 @@ You should be taken to a place like this:
 
 ![Settings Page](./images/settings-page.png?raw=true "Settings Page")
 
-### Using the Package
+## Using the Package
 
 ### Creating Cron Expressions
 
@@ -100,39 +100,16 @@ case 'create:posts':
 above.
 2. Add the command as a `case` in `Kernel.php` - see **Final Steps** above.
 
-## Running the tests
+<!-- ## Contributing
 
-<!-- Explain how to run the automated tests for this system
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. 
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 -->
-Details to come...
-
-<!-- ## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. -->
 
 ## Documentation
 
 Please refer to the project's Wiki on Github: [https://github.com/smeechos/laravel-task-scheduler/wiki](https://github.com/smeechos/laravel-task-scheduler/wiki).
+You'll find information regarding installation, running the tests, and a user guide.
 
 ## Versioning
 
