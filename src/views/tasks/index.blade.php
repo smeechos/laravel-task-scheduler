@@ -52,33 +52,35 @@
         <div class="card">
             <h5 class="card-header">All Tasks</h5>
             <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">Artisan Command</th>
-                        <th scope="col">Cron</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    if ( !empty($tasks) ) {
-                    foreach ( $tasks as $task ) : ?>
-                    <tr>
-                        <td>{{ $task->command }}</td>
-                        <td>{{ $task->cron->expression }}</td>
-                        <td>{{ $task->cron->description }}</td>
-                        <td>
-                            <a class="btn btn-primary btn-sm" href="/task-scheduler/tasks/edit/{{ $task->id }}" role="button">Edit</a>
-                            &nbsp;<a class="btn btn-danger btn-sm" href="/task-scheduler/tasks/delete/{{ $task->id }}" role="button">Delete</a>
-                        </td>
-                    </tr>
-                    <?php endforeach;
-                    }
-                    ?>
-                    </tbody>
-                </table>
+                @if( !empty($tasks) )
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Artisan Command</th>
+                            <th scope="col">Cron</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ( $tasks as $task )
+                            <tr>
+                                <td>{{ $task->command }}</td>
+                                <td>{{ $task->cron->expression }}</td>
+                                <td>{{ $task->cron->description }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="/task-scheduler/tasks/edit/{{ $task->id }}" role="button">Edit</a>
+                                    &nbsp;<a class="btn btn-danger btn-sm" href="/task-scheduler/tasks/delete/{{ $task->id }}" role="button">Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <div class="alert alert-info mb-0" role="alert">
+                        No tasks currently exist - use the above form to create one.
+                    </div>
+                @endif
             </div>
         </div>
     </div>

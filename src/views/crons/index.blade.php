@@ -40,6 +40,7 @@
     <div class="card">
         <h5 class="card-header">All Cron Schedules</h5>
         <div class="card-body">
+            @if( !empty($crons) )
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -50,25 +51,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php
-                if ( !empty($crons) ) {
-                foreach ( $crons as $cron ) : ?>
-                <tr>
-                    <td>{{ $cron->expression }}</td>
-                    <td>{{ $cron->description }}</td>
-                    <td>{{ $cron->task->count() }}</td>
-                    <td>
-                        <a class="btn btn-primary btn-sm" href="/task-scheduler/crons/edit/{{ $cron->id }}" role="button">Edit</a>
-                        @if( $cron->task->count() === 0 )
-                            &nbsp;<a class="btn btn-danger btn-sm" href="/task-scheduler/crons/delete/{{ $cron->id }}" role="button">Delete</a>
-                        @endif
-                    </td>
-                </tr>
-                <?php endforeach;
-                }
-                ?>
+                @foreach( $crons as $cron )
+                    <tr>
+                        <td>{{ $cron->expression }}</td>
+                        <td>{{ $cron->description }}</td>
+                        <td>{{ $cron->task->count() }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="/task-scheduler/crons/edit/{{ $cron->id }}" role="button">Edit</a>
+                            @if( $cron->task->count() === 0 )
+                                &nbsp;<a class="btn btn-danger btn-sm" href="/task-scheduler/crons/delete/{{ $cron->id }}" role="button">Delete</a>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
+            @else
+                <div class="alert alert-info mb-0" role="alert">
+                    No crons currently exist - use the above form to create one.
+                </div>
+            @endif
         </div>
     </div>
 </div>

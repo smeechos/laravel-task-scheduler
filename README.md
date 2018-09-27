@@ -1,5 +1,5 @@
 # Laravel Task Scheduler
-[![Latest Stable Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](https://packagist.org/packages/smeechos/task-scheduler)
+[![Latest Stable Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](https://packagist.org/packages/smeechos/task-scheduler)
 [![License](https://img.shields.io/github/license/smeechos/laravel-task-scheduler.svg)](https://packagist.org/packages/smeechos/task-scheduler)
 
 
@@ -11,94 +11,11 @@ Kernel.php to ensure the task scheduler executes your commands.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Installing
+1. [Installation Guide](https://github.com/smeechos/laravel-task-scheduler/wiki/Installation-Guide)
+2. [Developer Guide](https://github.com/smeechos/laravel-task-scheduler/wiki/Developer-Guide)
+3. [User Guide](https://github.com/smeechos/laravel-task-scheduler/wiki/User-Guide)
 
-Open the terminal and cd into your Laravel project's root directory. From there, run the following composer command:
-
-```
-composer require smeechos/task-scheduler
-```
-
-Laravel should automatically register the service provider, however if it does not,
-you'll need to manually register the service provider inside `config/app.php`:
-
-```
-'providers' => [
-    /*
-     * Package Service Providers...
-     */
-     Smeechos\TaskScheduler\TaskSchedulerServiceProvider::class,
-]
-```
-
-You'll then need to run the migrations for the package in the terminal:
-
-```
-php artisan migrate
-```
-
-You can test that setup was successful by visiting the task manager UI:
-
-```
-http://your-project/task-scheduler
-```
-
-You should be taken to a place like this:
-
-![Settings Page](./images/settings-page.png?raw=true "Settings Page")
-
-## Using the Package
-
-### Creating Cron Expressions
-
-The first thing you'll want to do is create any cron expressions you'll want to use. You can
-do this by navigating to the **Cron Expressions** tab, and adding a valid cron expression
-description:
-
-![Crons Page](./images/crons-page.png?raw=true "Crons Page")
-
-### Creating Tasks
-
-You'll then create a task by linking an artisan command with a cron. You can do this on the
-**Tasks / Artisan Commands** tab. Here you'll enter your artisan command name, and choose a
-cron from the drop down:
-
-![Tasks Page](./images/tasks-page.png?raw=true "Tasks Page")
-
-### Final Steps
-
-For Laravel's `schedule:run` command to work with this package, you'll need to add the following bit of code
-to the `schedule` method in your projects `app/Console/Kernel.php` file:
-
-```
-// Ensures the table that contains our tasks exists
-$tasks = (Schema::hasTable('task_scheduler_tasks')) ? $tasks = Task::all() : $tasks = [];
-
-// Loops through all the tasks and schedules the commands at the specified cron
-if ( !empty($tasks) ) {
-    foreach( $tasks as $task ) {
-        switch ($task->command) {
-            case 'test:command':
-                $schedule->command('test:command')->cron( $task->cron->expression )->withoutOverlapping();
-                break;
-        }
-    }
-}
-```
-
-For each command your application has, you'll need to add another `case` to the switch statement. For example,
-if my project has the command `create:posts`, you would need to add the follow:
-
-```
-case 'create:posts':
-    $schedule->command('create:posts')->cron( $task->cron->expression )->withoutOverlapping();
-    break;
-```
-
-**REMEMBER:** each time you create a new command in your Laravel project, you'll need to:
-1. Link the command to a desired cron (and create a new cron if need be) - see **Creating Tasks**
-above.
-2. Add the command as a `case` in `Kernel.php` - see **Final Steps** above.
+You can find the package on Packagist [here](https://packagist.org/packages/smeechos/task-scheduler).
 
 <!-- ## Contributing
 
